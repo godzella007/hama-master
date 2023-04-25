@@ -10,4 +10,4 @@ COPY . .
 
 EXPOSE 5000
 
-CMD ["nodemon","server"]
+CMD ["node","server"]
