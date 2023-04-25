@@ -15,7 +15,7 @@ COPY ./public ./public
 
 COPY ./src ./src
 
-RUN npm run build
+
 
 
 EXPOSE 8081
