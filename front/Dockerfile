@@ -16,5 +16,7 @@ COPY . .
 # Build the app
 RUN npm run build
 
+EXPOSE 8081
+
 # Set the command to run when the container starts
 CMD ["npm", "start"]
