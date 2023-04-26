@@ -13,8 +13,7 @@ RUN npm install
 # Copy the rest of the app's files to the container
 COPY . .
 
-# Build the app
-RUN npm run build
+RUN yarn build
 
 EXPOSE 8081
 
