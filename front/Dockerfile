@@ -2,20 +2,21 @@
 FROM node:18-alpine
 
 # Set the working directory to /app
-WORKDIR /app
+RUN mkdir -p usr/src/app
 
-# Copy the package.json and package-lock.json files to the container
-COPY package*.json ./
+WORKDIR /usr/src/app
 
-# Install the app's dependencies
+COPY package.jason /usr/src/app
+
 RUN npm install
 
-# Copy the rest of the app's files to the container
-COPY . .
+ADD src /usr/src/app/src
 
-RUN yarn build
+ADD public /usr/src/app/public
 
-EXPOSE 8081
+RUN npm build 
 
-# Set the command to run when the container starts
-CMD ["npm", "start"]
+EXPOSE 8081 
+
+CMD ["npm","start"]
+
