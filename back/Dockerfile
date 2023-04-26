@@ -8,7 +8,7 @@ RUN npm install
 
 COPY . . 
 
-RUN npm build
+RUN yarn build
 
 EXPOSE 5000
 
