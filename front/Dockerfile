@@ -1,22 +1,23 @@
 # Use an official Node.js runtime as a parent image
 FROM node:18-alpine
 
-# Set the working directory to /app
-RUN mkdir -p usr/src/app
-
+# Set the working directory to /usr/src/app
 WORKDIR /usr/src/app
 
-COPY package.json /usr/src/app
+# Copy package.json and package-lock.json to the working directory
+COPY package*.json ./
 
+# Install npm dependencies
 RUN npm install
 
-ADD src /usr/src/app/src
+# Copy the current directory contents into the container at /usr/src/app
+COPY . .
 
-ADD public /usr/src/app/public
+# Build the app
+RUN npm run build
 
-RUN npm build 
+# Expose port 3000 for the app to listen on
+EXPOSE 8081
 
-EXPOSE 8081 
-
-CMD ["npm","start"]
-
+# Start the app
+CMD ["npm", "start"]
